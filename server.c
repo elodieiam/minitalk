@@ -6,7 +6,7 @@
 /*   By: elrichar <elrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 10:57:25 by elrichar          #+#    #+#             */
-/*   Updated: 2023/06/10 21:07:11 by elrichar         ###   ########.fr       */
+/*   Updated: 2023/06/14 11:56:00 by elrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_handler(int signum, siginfo_t *siginfo, void *context)
 {
-	static char	octet;
+	static int	octet;
 	static int	i;
 
 	(void)context;
@@ -28,12 +28,14 @@ void	ft_handler(int signum, siginfo_t *siginfo, void *context)
 	i++;
 	if (i == 8)
 	{
-		printf("%c", octet);
 		if (octet == '\0')
 		{
 			kill(siginfo->si_pid, SIGUSR1);
 			usleep(100);
+			ft_printf("\n");
 		}
+		else
+			ft_printf("%c", i);
 		octet = 0;
 		i = 0;
 	}

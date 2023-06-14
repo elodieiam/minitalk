@@ -6,7 +6,7 @@
 /*   By: elrichar <elrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 16:17:29 by elrichar          #+#    #+#             */
-/*   Updated: 2023/06/10 21:06:07 by elrichar         ###   ########.fr       */
+/*   Updated: 2023/06/14 11:16:27 by elrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_atoi(const char *str)
 
 void	ft_end_signal(int signum)
 {
-	(void)signum;
+	if (signum == SIGUSR1)
 	printf("The message has been fully transmitted.\n");
 }
 
@@ -56,7 +56,7 @@ void	ft_send_bits(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(200);
+		usleep(400);
 		i--;
 	}
 }
@@ -83,12 +83,12 @@ int	main(int argc, char **argv)
 	sa.sa_handler = ft_end_signal;
 	if (argc == 3)
 	{
+		pid = ft_atoi(argv[1]);
 		if (sigaction(SIGUSR1, &sa, NULL) == -1)
 		{
 			printf("Sigaction failure\n");
 			exit (EXIT_FAILURE);
 		}
-		pid = ft_atoi(argv[1]);
 		while (argv[2][i])
 		{
 			ft_send_bits(pid, argv[2][i]);
