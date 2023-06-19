@@ -6,7 +6,7 @@
 /*   By: elrichar <elrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 13:54:48 by elrichar          #+#    #+#             */
-/*   Updated: 2023/06/18 14:51:50 by elrichar         ###   ########.fr       */
+/*   Updated: 2023/06/19 10:28:09 by elrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_handler(int signum, siginfo_t *siginfo, void *context)
 			ft_printf("\n");
 		}
 		else
-			ft_printf("%c", i);
+			ft_printf("%c", octet);
 		octet = 0;
 		i = 0;
 	}
