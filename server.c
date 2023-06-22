@@ -6,7 +6,7 @@
 /*   By: elrichar <elrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 13:54:48 by elrichar          #+#    #+#             */
-/*   Updated: 2023/06/19 16:15:49 by elrichar         ###   ########.fr       */
+/*   Updated: 2023/06/22 16:45:45 by elrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_handler(int signum, siginfo_t *siginfo, void *context)
 		if (octet == '\0')
 		{
 			kill(siginfo->si_pid, SIGUSR1);
-			usleep(100);
+			usleep(10);
 			ft_printf("\n");
 		}
 		else
@@ -58,7 +58,6 @@ int	main(void)
 			ft_printf("Sigaction failure\n");
 			exit (EXIT_FAILURE);
 		}
-		pause();
 	}
 	return (0);
 }
