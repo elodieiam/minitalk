@@ -6,7 +6,7 @@
 /*   By: elrichar <elrichar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 13:54:48 by elrichar          #+#    #+#             */
-/*   Updated: 2023/06/22 16:45:45 by elrichar         ###   ########.fr       */
+/*   Updated: 2023/07/18 16:22:52 by elrichar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_handler(int signum, siginfo_t *siginfo, void *context)
 		if (octet == '\0')
 		{
 			kill(siginfo->si_pid, SIGUSR1);
-			usleep(10);
+			//usleep(10); car le signal de fin est transmis a client et gere independamment par client. server, lui peut continuer et afficher le \n. on n'envoie rien d'autre apres, on ne recoit rien d'autre apres donc on l'enleve
 			ft_printf("\n");
 		}
 		else
